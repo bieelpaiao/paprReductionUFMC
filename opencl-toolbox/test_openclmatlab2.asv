@@ -1,0 +1,20 @@
+ocl = opencl();
+ocl.initialize(1,1);
+ocl.addfile('cl/hello_world.cl');
+ocl.build();
+
+n = int32(13);
+
+% Validate clkernel
+addkernel = clkernel('add', [n,0,0], [n,0,0]);
+
+% Test clobject
+data = clobject(zeros(1,n, 'char'));
+
+addkernel(data);
+
+z1 = z.get();
+x1 = x.get();
+y1 = y.get();
+
+
