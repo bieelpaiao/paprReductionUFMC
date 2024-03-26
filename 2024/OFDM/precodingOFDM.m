@@ -3,8 +3,8 @@
 %%
 M = 4;                 % Modulation alphabet
 k = log2(M);           % Bits/symbol
-numSC = 256;           % Number of OFDM subcarriers
-cpLen = 32;            % OFDM cyclic prefix length
+numSC = 512;           % Number of OFDM subcarriers
+cpLen = 64;            % OFDM cyclic prefix length
 nSym = 100;
 scs = 1000000;
 
@@ -52,14 +52,14 @@ qamDecoded = decod(pim, qamRx);                                 % Apply SRC* pre
 dataOut = qamdemod(qamDecoded, M, "gray", "OutputType","bit");  % Apply QPSK demodulation
 
 %%
-% pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
-% paprOFDM = pm(txSig);
-% disp(['Peak-to-Average-Power-Ratio (PAPR) for OFDM = ' num2str(paprOFDM) ' dB']);
-% plotCCDF(pm);
+pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
+paprOFDM = pm(txSig);
+disp(['Peak-to-Average-Power-Ratio (PAPR) for OFDM = ' num2str(paprOFDM) ' dB']);
+plotCCDF(pm);
 
 %% Plot Spectrum Analyzer
-Fs = ofdmMod.FFTLength * scs * ofdmMod.OversamplingFactor;
-spectrum = spectrumAnalyzer('SampleRate', Fs,'ChannelNames', {'Tradicional', 'Pré-codificado'}, 'Title', 'Espectro OFDM');
+% Fs = ofdmMod.FFTLength * scs * ofdmMod.OversamplingFactor;
+% spectrum = spectrumAnalyzer('SampleRate', Fs,'ChannelNames', {'Tradicional', 'Pré-codificado'}, 'Title', 'Espectro OFDM');
 % spectrum(txSig);
 
 
