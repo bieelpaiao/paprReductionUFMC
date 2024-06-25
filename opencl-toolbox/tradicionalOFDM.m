@@ -1,4 +1,4 @@
-% clear all; clc;
+clear all; clc;
 
 %%
 M = 4;                 % Modulation alphabet

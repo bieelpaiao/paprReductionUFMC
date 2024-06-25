@@ -10,10 +10,10 @@ y = clbuffer('ro', 'single', n);
 z = clbuffer('rw', 'single', n);
 p = clbuffer('wo', 'single', n);
 
-x.set(1:10);
-y.set(21:30);
-z.set((0.1:0.1:1)*3);
-p.set(3:12);
+x.set([1:10]);
+y.set([21:30]);
+z.set([0.1:0.1:1]*3);
+p.set([3:12]);
 
 % Validate clbuffer
 x.get()

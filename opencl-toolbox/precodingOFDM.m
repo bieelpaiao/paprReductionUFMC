@@ -1,10 +1,10 @@
-% clear all; clc;
+clear all; clc;
 
 %%
 M = 4;                 % Modulation alphabet
 k = log2(M);           % Bits/symbol
 numSC = 512;           % Number of OFDM subcarriers
-cpLen = 64;            % OFDM cyclic prefix length
+cpLen = 8;            % OFDM cyclic prefix length
 nSym = 100;
 scs = 1000000;
 
@@ -42,7 +42,7 @@ snr = EbNo + 10*log10(k) + 10*log10(numDC/numSC);
 %%
 dataIn = randi([0,1],frameSize);                                % Generate binary data
 qamTx = qammod(dataIn, M, "gray", "InputType", "bit");          % Apply QPSK modulation
-qamFiltered = precod(pim, qamTx);                               % Apply SRC precoding
+qamFiltered = precodCL(pim, qamTx);                               % Apply SRC precoding
 txSig = ofdmMod(qamFiltered);                                   % Apply OFDM modulation
 powerDB = 10*log10(var(txSig));                                 % Calculate Tx signal power
 noiseVar = 10.^(0.1*(powerDB-snr));                             % Calculate the noise variance
@@ -55,7 +55,7 @@ dataOut = qamdemod(qamDecoded, M, "gray", "OutputType","bit");  % Apply QPSK dem
 pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
 paprOFDM = pm(txSig);
 disp(['Peak-to-Average-Power-Ratio (PAPR) for OFDM = ' num2str(paprOFDM) ' dB']);
-plotCCDF(pm);
+% plotCCDF(pm);
 
 %% Plot Spectrum Analyzer
 % Fs = ofdmMod.FFTLength * scs * ofdmMod.OversamplingFactor;
