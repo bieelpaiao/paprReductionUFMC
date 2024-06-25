@@ -3,7 +3,7 @@ clear all: clc
 %%
 M = 4;                 % Modulation alphabet
 k = log2(M);           % Bits/symbol
-numSC = 128;           % Number of OFDM subcarriers
+numSC = 512;           % Number of OFDM subcarriers
 cpLen = 32;            % OFDM cyclic prefix length
 maxBitErrors = 100;    % Maximum number of bit errors
 maxNumBits = 1e7;      % Maximum number of bits transmitted
@@ -63,10 +63,12 @@ berTheory = berawgn(EbNoVec,'qam',M,'nondiff');
 
 %%
 figure (1)
-semilogy(EbNoVec,berVec(:,1),'*')
-hold on
-semilogy(EbNoVec,berTheory)
-legend('Simulation','Theory','Location','Best')
+% semilogy(EbNoVec,berVec(:,1),'*')
+semilogy(EbNoVec,berVec(:,1), ':o')
+% hold on
+% semilogy(EbNoVec,berTheory)
+% legend('Simulation','Theory','Location','Best')
+% legend('Simulation')
 xlabel('Eb/No (dB)')
 ylabel('Bit Error Rate')
 grid on

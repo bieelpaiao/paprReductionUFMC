@@ -46,3 +46,4 @@ end
 pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
 paprUFMC = pm(txSig);
 disp(['Peak-to-Average-Power-Ratio (PAPR) for UFMC = ' num2str(paprUFMC) ' dB']);
+plotCCDF(pm);

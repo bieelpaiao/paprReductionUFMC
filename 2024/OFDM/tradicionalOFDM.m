@@ -3,7 +3,7 @@
 %%
 M = 4;                 % Modulation alphabet
 k = log2(M);           % Bits/symbol
-numSC = 256;           % Number of OFDM subcarriers
+numSC = 512;           % Number of OFDM subcarriers
 cpLen = 32;            % OFDM cyclic prefix length
 nSym = 100;
 scs = 1000000;
@@ -42,10 +42,10 @@ qamRx = ofdmDemod(rxSig);                                   % Apply OFDM demodul
 dataOut = qamdemod(qamRx, M, "gray", "OutputType","bit");   % Apply QPSK demodulation
 
 %% Display PAPR and Plot CCDF
-% pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
-% paprOFDM = pm(txSig);
-% disp(['Peak-to-Average-Power-Ratio (PAPR) for OFDM = ' num2str(paprOFDM) ' dB']);
-% % plotCCDF(pm);
+pm = powermeter(Measurement="Peak-to-average power ratio",ComputeCCDF=true);
+paprOFDM = pm(txSig);
+disp(['Peak-to-Average-Power-Ratio (PAPR) for OFDM = ' num2str(paprOFDM) ' dB']);
+plotCCDF(pm);
 
 %% Plot Spectrum Analyzer
 % Fs = ofdmMod.FFTLength * scs * ofdmMod.OversamplingFactor;

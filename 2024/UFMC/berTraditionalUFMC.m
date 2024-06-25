@@ -88,12 +88,12 @@ end
 
 %%
 berTheory = berawgn(EbNoVec,'qam',2^bitsPerSubCarrier,'nondiff');
-figure (1)
-semilogy(EbNoVec,berVec(:,1), '*')
-hold on
-semilogy(EbNoVec,berTheory)
-legend('Simulation','Theory','Location','Best')
-xlabel('Eb/No (dB)')
-ylabel('Bit Error Rate')
-grid on
-hold off
+% figure (1)
+semilogy(EbNoVec,berVec(:,1), '--o')
+% hold on
+% semilogy(EbNoVec,berTheory)
+% legend('Simulation','Theory','Location','Best')
+% xlabel('Eb/No (dB)')
+% ylabel('Bit Error Rate')
+% grid on
+% hold off

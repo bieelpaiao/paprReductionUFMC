@@ -1,8 +1,8 @@
 s = rng(211);       % Set RNG state for repeatability
 
-numFFT = 512;        % number of FFT points
+numFFT = 2048;        % number of FFT points
 subbandSize = 20;    % must be > 1 
-numSubbands = 10;    % numSubbands*subbandSize <= numFFT
+numSubbands = 40;    % numSubbands*subbandSize <= numFFT
 
 % Dolph-Chebyshev window design parameters
 filterLen = 43;      % similar to cyclic prefix length
@@ -20,7 +20,7 @@ inpData = zeros(bitsPerSubCarrier*subbandSize, numSubbands);
 txSig = complex(zeros(numFFT+filterLen-1, 1));
 
 nOFDM = numSubbands*subbandSize;
-beta = 0.75;
+beta = 0.35;
 np = round(nOFDM*beta);
 
 pim = matrixGeneration(nOFDM, np);

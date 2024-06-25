@@ -3,8 +3,8 @@
 %%
 M = 4;                 % Modulation alphabet
 k = log2(M);           % Bits/symbol
-numSC = 512;           % Number of OFDM subcarriers
-cpLen = 64;            % OFDM cyclic prefix length
+numSC = 2048;           % Number of OFDM subcarriers
+cpLen = 128;            % OFDM cyclic prefix length
 nSym = 100;
 scs = 1000000;
 
