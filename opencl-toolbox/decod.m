@@ -1,3 +1,3 @@
-function y = decod2(pim, x)
+function y = decod(pim, x)
     y = (x' * pim)';
 end

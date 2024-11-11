@@ -1,3 +1,3 @@
-function y = precod2(pim, x)
+function y = precod(pim, x)
     y = pim * x;
 end

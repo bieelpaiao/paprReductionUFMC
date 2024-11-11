@@ -1,4 +1,4 @@
-function y = precodCL2(pim, x)
+function y = precodCL(pim, x)
     % Inicialização e compilação do kernel
     ocl = opencl();
     ocl.initialize();
